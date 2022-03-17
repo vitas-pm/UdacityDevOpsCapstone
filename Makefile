@@ -11,8 +11,9 @@ venv:
 	source ~/.venv/bin/activate
 
 dependencies:
-    wget -O ./hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
-    chmod +x ./hadolint
+	# Install hadolint
+	wget -O ./hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
+	chmod +x ./hadolint
 
 requirements:
 	# This should be run from inside a virtualenv
