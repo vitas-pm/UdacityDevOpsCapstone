@@ -17,7 +17,8 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            make venv
+            python3 -m venv .venv
+            . ~/.venv/bin/activate
             make requirements
             make dependencies
       - save_cache:
@@ -27,5 +28,5 @@ jobs:
       - run:
           name: run lint
           command: |
-            source ~/.venv/bin/activate
+            . ~/.venv/bin/activate
             make lint

@@ -20,7 +20,6 @@ RUN curl -L https://github.com/gabrielecirulli/2048/tarball/master > game.tar.gz
     FOLDER=$(tar -tf game.tar.gz | head -n 1) &&\
     tar -xzf game.tar.gz &&\
     mv "${FOLDER}" templates &&\
-    cp -r templates static &&\
     rm game.tar.gz
 
 ## Step 5:

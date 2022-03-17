@@ -12,6 +12,10 @@ LOG.setLevel(logging.INFO)
 def home():
     return render_template('index.html')
 
+app.route("/style/fonts/<file>")
+def get_font(file):
+    return send_from_directory("templates", f"/style/fonts/{file}")
+
 @app.route("/<folder>/<file>")
 def get_from_folder(folder, file):
     return send_from_directory("templates", f"{folder}/{file}")
