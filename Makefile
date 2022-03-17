@@ -21,6 +21,6 @@ requirements:
 		pip install -r requirements.txt
 
 lint:
-	hadolint Dockerfile
+	./hadolint Dockerfile
 	pylint --disable=R,C,W1203,W1202 game.py
 
