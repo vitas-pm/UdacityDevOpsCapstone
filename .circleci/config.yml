@@ -75,7 +75,7 @@ jobs:
           command: |
             aws eks update-kubeconfig --region us-east-1 --name Test --alias Test
             kubectl config get-contexts
-            image=$(kubectl get deployment browser-game --cluster=Test --namespace=game -o custom-columns=IMAGE:.spec.template.spec.containers[0].image | tail -1)
+            image=$(kubectl get deployment browser-game --namespace=game -o custom-columns=IMAGE:.spec.template.spec.containers[0].image | tail -1)
             echo "$image"
             version="${image:31}"
             echo "$version"
