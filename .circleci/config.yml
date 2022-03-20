@@ -66,7 +66,9 @@ jobs:
       - run:
           name: Install docker and kubectl
           command: |
-            pip install docker
+            curl -fsSL https://get.docker.com -o get-docker.sh
+            chmod -x get-docker.sh
+            ./get-docker.sh
             curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
             chmod +x ./kubectl
             mv ./kubectl /usr/local/bin
@@ -113,6 +115,8 @@ jobs:
       - run:
           name: deploy kubernetes pod
           command: |
+            aws eks update-kubeconfig --region us-east-1 --name Test --alias Test
+            kubectl config get-contexts
             ver=$(cat version.txt)
             echo "deploying $ver"
             chmod +x rolling_update.sh
