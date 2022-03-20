@@ -56,8 +56,14 @@ jobs:
   docker:
     docker:
       - image: amazon/aws-cli
+    working_directory: ~/UdacityDevOpsCapstone/
     steps:
       - checkout
+      - run:
+          name: Install docker
+          command: |
+            curl -fsSL https://get.docker.com -o get-docker.sh
+            sudo sh get-docker.sh
       - run:
           name: get current version
           command: |
@@ -86,8 +92,14 @@ jobs:
   kubernetes:
     docker:
       - image: amazon/aws-cli
+    working_directory: ~/UdacityDevOpsCapstone/
     steps:
       - checkout
+      - run:
+          name: Install eksctl
+          command: |
+            curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+            sudo mv /tmp/eksctl /usr/local/bin
       - attach_workspace:
           at: ~/
       - run:
