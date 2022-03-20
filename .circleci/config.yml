@@ -84,6 +84,7 @@ jobs:
       - run:
           name: build new docker and upload
           command: |
+            service docker start
             sleep 30
             chmod +x run_docker.sh
             ./run_docker.sh
