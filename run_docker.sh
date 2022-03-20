@@ -4,6 +4,7 @@
 
 # Step 1:
 # Build image and add a descriptive tag
+echo building
 docker build --tag=browser-game .
 
 # Step 2: 
