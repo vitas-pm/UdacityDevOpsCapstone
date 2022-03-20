@@ -19,7 +19,7 @@ commands:
             new=$(cat rollback_version)
             if [[ "${old}" != "${new}" ]]
             then
-              chmod -x revert_update.sh
+              chmod +x revert_update.sh
               ./revert_update.sh
             else
               echo "Rollback not necessary"
@@ -67,7 +67,7 @@ jobs:
           name: Install docker and kubectl
           command: |
             curl -fsSL https://get.docker.com -o get-docker.sh
-            chmod -x get-docker.sh
+            chmod +x get-docker.sh
             ./get-docker.sh
             curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
             chmod +x ./kubectl
