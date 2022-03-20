@@ -69,8 +69,7 @@ jobs:
             apk add --update docker curl
             curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl
             chmod +x ./kubectl
-            sudo mv ./kubectl /usr/local/bin/kubectl
-            kubectl version --client
+            mv ./kubectl /usr/local/bin/kubectl
       - run:
           name: get current version
           command: |
