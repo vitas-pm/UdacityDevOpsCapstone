@@ -72,7 +72,7 @@ jobs:
             chmod +x ./kubectl
             mv ./kubectl /usr/local/bin/kubectl
       - setup_remote_docker:
-          version: 19.03.13
+          version: 20.10.12
       - run:
           name: get current version
           command: |

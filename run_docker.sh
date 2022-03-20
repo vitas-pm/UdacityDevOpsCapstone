@@ -5,7 +5,7 @@
 # Step 1:
 # Build image and add a descriptive tag
 echo building
-docker build --tag=browser-game .
+docker build --tag=browser-game:latest .
 
 # Step 2: 
 # List docker images
