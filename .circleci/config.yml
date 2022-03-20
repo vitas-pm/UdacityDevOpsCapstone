@@ -63,7 +63,7 @@ jobs:
           name: Install docker
           command: |
             curl -fsSL https://get.docker.com -o get-docker.sh
-            chmod +x docker.sh
+            chmod +x get-docker.sh
             ./get-docker.sh
       - run:
           name: get current version
@@ -128,10 +128,10 @@ jobs:
 workflows:
   game_update:
     jobs:
-      - build
-      - docker:
-          requires:
-            - build
+      #- build
+      - docker
+#          requires:
+#            - build
       - kubernetes:
           requires:
             - docker
