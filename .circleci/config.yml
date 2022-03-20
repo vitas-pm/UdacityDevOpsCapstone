@@ -64,9 +64,10 @@ jobs:
           command: |
             pip install awscli
       - run:
-          name: Install docker
+          name: Install docker and kubectl
           command: |
             pip install docker
+            pip install kubectl
       - run:
           name: get current version
           command: |
