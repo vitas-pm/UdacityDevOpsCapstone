@@ -69,8 +69,7 @@ jobs:
             apk update
             apk add --update docker docker-compose curl bash openrc
             rc-update add docker boot
-            sleep 30
-            service docker start
+            sleep 60
             service docker status
             curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl
             chmod +x ./kubectl
