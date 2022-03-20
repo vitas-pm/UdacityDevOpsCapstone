@@ -66,7 +66,10 @@ jobs:
       - run:
           name: Install docker and kubectl
           command: |
-            apk add --update docker curl bash openrc
+            apk update
+            apk add --update docker docker-compose curl bash
+            rc-update add docker boot
+            service docker start
             curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl
             chmod +x ./kubectl
             mv ./kubectl /usr/local/bin/kubectl
@@ -84,7 +87,6 @@ jobs:
       - run:
           name: build new docker and upload
           command: |
-            sleep 30
             chmod +x run_docker.sh
             ./run_docker.sh
             chmod +x increase_version.sh
