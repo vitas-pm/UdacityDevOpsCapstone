@@ -5,14 +5,14 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath=vitaspm/price_predictor
-version=v0.1
+dockerpath=vitaspm/browser-game
+version="$1"
 
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
-cat docker_pw.txt | docker login --username vitaspm --password-stdin
-docker tag price_predictor:latest $dockerpath:$version
+echo "$DOCKER_HUB_PW" | docker login --username vitaspm --password-stdin
+docker tag browser-game:latest $dockerpath:$version
 
 # Step 3:
 # Push image to a docker repository

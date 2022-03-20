@@ -27,5 +27,11 @@ def about():
            '2048 is licensed under the <a href="https://github.com/gabrielecirulli/2048/blob/master/LICENSE.txt">MIT license.</a>'
     return html.format(format)
 
+@app.route("/version")
+def version():
+    with open("version.txt", "r") as f:
+        ver = f.read().strip()
+    return ver
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80, debug=True)
