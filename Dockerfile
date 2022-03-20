@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir --upgrade pip &&\
 
 ## Step 4:
 # Download the game files
-#SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN curl -L https://github.com/gabrielecirulli/2048/tarball/master > game.tar.gz &&\
     FOLDER=$(tar -tf game.tar.gz | head -n 1) &&\
