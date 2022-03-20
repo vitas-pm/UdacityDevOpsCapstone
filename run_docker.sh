@@ -5,6 +5,8 @@
 # Step 1:
 # Build image and add a descriptive tag
 echo building
+service docker status
+ls -la /var/run/docker.sock
 docker build --tag=browser-game .
 
 # Step 2: 
