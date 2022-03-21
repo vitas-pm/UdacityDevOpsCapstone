@@ -98,7 +98,7 @@ jobs:
             chmod +x upload_docker.sh
             ./upload_docker.sh "$ver"
       - persist_to_workspace:
-          root: ~/
+          root: ~/UdacityDevOpsCapstone/
           paths:
             - version.txt
             - old_version.txt
