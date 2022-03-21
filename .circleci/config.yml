@@ -135,14 +135,15 @@ jobs:
           command: |
             URL="http://a46c52c67777a4d6dbe5a07753422687-1870156947.us-east-1.elb.amazonaws.com/version"
             echo ${URL}
-            # waiting a little
+            echo "waiting a little for changes to reach the website"
             sleep 30
             version_online=$(curl "$URL")
             deployed_version=$(cat version.txt)
             echo "$version_online $deployed_version"
             if [[ "${version_online}" == "${deployed_version}" ]]
             then
-              return 0
+              echo "Failing on purpose"
+              return 1
             else
               return 1
             fi
