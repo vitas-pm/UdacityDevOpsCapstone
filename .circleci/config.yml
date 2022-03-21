@@ -10,7 +10,7 @@ commands:
             image=$(kubectl get deployment browser-game --namespace=game -o custom-columns=IMAGE:.spec.template.spec.containers[0].image | tail -1)
             deployed_version="${image:31}"
             echo "$deployed_version" > rollback_version.txt
-            echo "rolling back to $deployed_version"
+            echo "currently deployed $deployed_version"
       - run:
           name: rollback
           when: on_fail
@@ -142,8 +142,7 @@ jobs:
             echo "$version_online $deployed_version"
             if [[ "${version_online}" == "${deployed_version}" ]]
             then
-              echo "Failing on purpose"
-              return 1
+              return 0
             else
               return 1
             fi
