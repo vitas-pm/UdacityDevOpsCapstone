@@ -143,10 +143,10 @@ jobs:
 workflows:
   game_update:
     jobs:
-      #- build
-      - docker
-#          requires:
-#            - build
-#      - kubernetes:
-#          requires:
-#            - docker
+      - build
+      - docker:
+          requires:
+            - build
+      - kubernetes:
+          requires:
+            - docker
