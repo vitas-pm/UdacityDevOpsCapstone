@@ -130,19 +130,19 @@ jobs:
             echo "deploying $ver"
             chmod +x rolling_update.sh
             ./rolling_update.sh "$ver"
-      - run:
-          name: smoke test
-          command: |
-            URL="http://a46c52c67777a4d6dbe5a07753422687-1870156947.us-east-1.elb.amazonaws.com/version"
-            echo ${URL}
-            version_online=$(curl "$URL")
-            deployed_version=$(cat version.txt)
-            echo "$version_online $deployed_version"
-            if [[ "${version_online}" == "${deployed_version}" ]]
-            then
-              return 0
-            else
-              return 1
+#      - run:
+#          name: smoke test
+#          command: |
+#            URL="http://a46c52c67777a4d6dbe5a07753422687-1870156947.us-east-1.elb.amazonaws.com/version"
+#            echo ${URL}
+#            version_online=$(curl "$URL")
+#            deployed_version=$(cat version.txt)
+#            echo "$version_online $deployed_version"
+#            if [[ "${version_online}" == "${deployed_version}" ]]
+#            then
+#              return 0
+#            else
+#              return 1
             fi
       - rollback
 
