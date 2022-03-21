@@ -105,18 +105,23 @@ jobs:
 
   kubernetes:
     docker:
-      - image: amazon/aws-cli
+      - image: python:3.7-alpine3.11
     working_directory: ~/UdacityDevOpsCapstone/
     steps:
       - checkout
       - run:
-          name: Install eksctl
+          name: Install aws
           command: |
-            yum -y install tar gzip
-            curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-            mv /tmp/eksctl /usr/local/bin
+            pip install awscli
+      - run:
+          name: Install kubectl
+          command: |
+            apk add --update curl bash tar
+            curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl
+            chmod +x ./kubectl
+            mv ./kubectl /usr/local/bin/kubectl
       - attach_workspace:
-          at: ~/
+          at: ~/UdacityDevOpsCapstone/
       - run:
           name: deploy kubernetes pod
           command: |
