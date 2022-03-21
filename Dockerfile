@@ -18,10 +18,10 @@ RUN pip install --no-cache-dir --upgrade pip &&\
 # Download the game files
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN curl -L "https://github.com/gabrielecirulli/2048/tarball/master" > game.tar.gz &&\
+RUN curl -L https://github.com/gabrielecirulli/2048/tarball/master > game.tar.gz &&\
     tar -tf game.tar.gz > zip_contents.txt &&\
     folder=$(head -n 1 zip_contents.txt) &&\
-    echo $folder &&\
+    echo "${folder}" &&\
     tar -xzf game.tar.gz &&\
     mv "${folder}" templates &&\
     rm game.tar.gz
