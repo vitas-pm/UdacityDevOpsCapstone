@@ -84,14 +84,17 @@ jobs:
             echo "$version"
             echo "$version" > version.txt
             echo "$version" > old_version.txt
+            ls
       - run:
           name: build new docker and upload
           command: |
             chmod +x run_docker.sh
             ./run_docker.sh
+            ls
             chmod +x increase_version.sh
             ./increase_version.sh
             ver=$(cat version.txt)
+            echo $ver
             chmod +x upload_docker.sh
             ./upload_docker.sh "$ver"
       - persist_to_workspace:
