@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-kubectl rollout undo deployment/browser-game
+kubectl rollout undo deployment/browser-game --namespace=game
 

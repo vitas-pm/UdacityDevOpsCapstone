@@ -2,4 +2,4 @@
 
 NEWVERSION="$1"
 
-kubectl set image deployment/browser-game browser-game=docker.io/vitaspm/browser-game:$NEWVERSION
+kubectl set image deployment/browser-game browser-game=docker.io/vitaspm/browser-game:$NEWVERSION --namespace=game

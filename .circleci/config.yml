@@ -7,7 +7,7 @@ commands:
           name: Check versions
           when: on_fail
           command: |
-            image=$(kubectl get deployment browser-game --cluster=Test -o custom-columns=IMAGE:.spec.template.spec.containers[0].image | tail -1)
+            image=$(kubectl get deployment browser-game --namespace=game -o custom-columns=IMAGE:.spec.template.spec.containers[0].image | tail -1)
             deployed_version="${image:31}"
             echo "$deployed_version" > rollback_version.txt
             echo "rolling back to $deployed_version"
@@ -138,6 +138,7 @@ jobs:
             echo ${URL}
             version_online=$(curl "$URL")
             deployed_version=$(cat version.txt)
+            echo "$version_online $deployed_version"
             if [[ "${version_online}" == "${deployed_version}" ]]
             then
               return 0
