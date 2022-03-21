@@ -1,4 +1,4 @@
-current_version=$(<version.txt)   #v1.xx
+current_version=`cat version.txt`     #v1.xx
 echo "current version: $current_version"
 to_int=${current_version:3}
 ((to_int++))
