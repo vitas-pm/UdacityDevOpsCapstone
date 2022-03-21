@@ -18,15 +18,12 @@ RUN pip install --no-cache-dir --upgrade pip &&\
 # Download the game files
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN curl -L https://github.com/gabrielecirulli/2048/tarball/master > game.tar.gz
-RUN tar -tf game.tar.gz
-RUN TEST="Hallo"
-RUN echo $TEST
-RUN echo $(echo "fuck" | head -n 1)
-RUN FOLDER=$(tar -tf game.tar.gz | head -n 1)
-RUN tar -xzf game.tar.gz
-RUN mv "${FOLDER}" templates
-RUN rm game.tar.gz
+RUN curl -L https://github.com/gabrielecirulli/2048/tarball/master > game.tar.gz &&\
+    tar -tf game.tar.gz > zip_contents.txt &&\
+    folder=$(head -n 1 zip_contents.txt) &&\
+    tar -xzf game.tar.gz &&\
+    mv "${folder}" templates &&\
+    rm game.tar.gz
 
 ## Step 5:
 # Expose port 80
