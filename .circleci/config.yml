@@ -16,7 +16,7 @@ commands:
           when: on_fail
           command: |
             old=$(cat old_version.txt)
-            new=$(cat rollback_version)
+            new=$(cat rollback_version.txt)
             if [[ "${old}" != "${new}" ]]
             then
               chmod +x revert_update.sh
@@ -88,13 +88,12 @@ jobs:
       - run:
           name: build new docker and upload
           command: |
-            chmod +x run_docker.sh
-            ./run_docker.sh
-            ls
             chmod +x increase_version.sh
             ./increase_version.sh
             ver=$(cat version.txt)
             echo $ver
+            chmod +x run_docker.sh
+            ./run_docker.sh
             chmod +x upload_docker.sh
             ./upload_docker.sh "$ver"
       - persist_to_workspace:
