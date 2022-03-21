@@ -20,7 +20,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN curl -L https://github.com/gabrielecirulli/2048/tarball/master > game.tar.gz
 RUN tar -tf game.tar.gz
-RUN echo $("fuck" | head -n 1)
+RUN test="Hallo"
+RUN echo $test
+RUN echo $(echo "fuck" | head -n 1)
 RUN FOLDER=$(tar -tf game.tar.gz | head -n 1)
 RUN tar -xzf game.tar.gz
 RUN mv "${FOLDER}" templates
