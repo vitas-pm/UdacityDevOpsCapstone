@@ -22,9 +22,12 @@ def get_from_folder(folder, file):
 
 @app.route("/about")
 def about():
-    html = 'Created by Gabriele Cirulli.</br>' \
+    html = 'Browser game created by Gabriele Cirulli.</br>' \
+           'Github: <a href="https://github.com/gabrielecirulli/2048">github.com/gabrielecirulli/2048</a></br>' \
            'Based on 1024 by Veewo Studio and conceptually similar to Threes by Asher Vollmer.</br>' \
-           '2048 is licensed under the <a href="https://github.com/gabrielecirulli/2048/blob/master/LICENSE.txt">MIT license.</a>'
+           '2048 is licensed under the <a href="https://github.com/gabrielecirulli/2048/blob/master/LICENSE.txt">MIT license.</a></br>' \
+           'Uploaded to AWS as part of the Udacity Cloud DevOps Nanodegree Capstone Project by Philipp Malkmus.</br>' \
+           'Github: <a href="https://github.com/vitas-pm/UdacityDevOpsCapstone">github.com/vitas-pm/UdacityDevOpsCapstone</a>'
     return html.format(format)
 
 @app.route("/version")
